@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  homepilot-server:
+    container_name: homepilot-server
+    build:
+      context: ./server
+      dockerfile: docker/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./server:/usr/src/app
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    networks:
+      - homepilot
+    depends_on:
+      - homepilot-database
+
+  homepilot-database:
+    container_name: homepilot-database
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: ${DATABASE_USER-homepilot}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD-homepilot}
+      POSTGRES_DB: ${DATABASE_NAME-homepilot}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
+    volumes:
+      - postgres:/var/lib/postgresql/data/pgdata
+    networks:
+      - homepilot
+
+networks:
+  homepilot:
+    driver: bridge
+
+volumes:
+  postgres:

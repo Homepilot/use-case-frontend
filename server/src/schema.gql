@@ -1,0 +1,276 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+type Landlord {
+  Unit: [Unit!]
+  _count: LandlordCount!
+  created_at: DateTime!
+  display_name: String
+  first_name: String!
+  gender: String!
+  id: ID!
+  last_name: String!
+  updated_at: DateTime!
+}
+
+type LandlordCount {
+  Unit: Int!
+}
+
+input LandlordCreateNestedOneWithoutUnitInput {
+  connect: LandlordWhereUniqueInput
+  connectOrCreate: LandlordCreateOrConnectWithoutUnitInput
+  create: LandlordCreateWithoutUnitInput
+}
+
+input LandlordCreateOrConnectWithoutUnitInput {
+  create: LandlordCreateWithoutUnitInput!
+  where: LandlordWhereUniqueInput!
+}
+
+input LandlordCreateWithoutUnitInput {
+  first_name: String!
+  gender: String!
+  last_name: String!
+}
+
+input LandlordOrderByWithRelationInput {
+  first_name: SortOrder
+  gender: SortOrder
+  id: SortOrder
+  last_name: SortOrder
+}
+
+type LandlordPaginated {
+  count: Int!
+  rows: [Landlord!]!
+}
+
+input LandlordRelationFilter {
+  is: LandlordWhereInput
+  isNot: LandlordWhereInput
+}
+
+enum LandlordScalarFieldEnum {
+  created_at
+  first_name
+  gender
+  id
+  last_name
+  updated_at
+}
+
+input LandlordUpdateOneRequiredWithoutUnitNestedInput {
+  connect: LandlordWhereUniqueInput
+  connectOrCreate: LandlordCreateOrConnectWithoutUnitInput
+  create: LandlordCreateWithoutUnitInput
+  update: LandlordUpdateWithoutUnitInput
+  upsert: LandlordUpsertWithoutUnitInput
+}
+
+input LandlordUpdateWithoutUnitInput {
+  first_name: StringFieldUpdateOperationsInput
+  gender: StringFieldUpdateOperationsInput
+  last_name: StringFieldUpdateOperationsInput
+}
+
+input LandlordUpsertWithoutUnitInput {
+  create: LandlordCreateWithoutUnitInput!
+  update: LandlordUpdateWithoutUnitInput!
+}
+
+input LandlordWhereInput {
+  AND: [LandlordWhereInput!]
+  NOT: [LandlordWhereInput!]
+  OR: [LandlordWhereInput!]
+  first_name: StringFilter
+  gender: StringFilter
+  id: IntFilter
+  last_name: StringFilter
+}
+
+input LandlordWhereUniqueInput {
+  id: Int
+}
+
+type Mutation {
+  createUnit(data: UnitCreateInput!): Unit!
+  deleteUnit(id: Int!): Unit!
+  updateUnit(data: UnitUpdateInput!, id: Int!): Unit!
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+type Query {
+  getHello: String!
+  landlords(cursor: LandlordWhereUniqueInput, distinct: [LandlordScalarFieldEnum!], orderBy: [LandlordOrderByWithRelationInput!], skip: Int, take: Int, where: LandlordWhereInput): LandlordPaginated!
+  units(cursor: UnitWhereUniqueInput, distinct: [UnitScalarFieldEnum!], orderBy: [UnitOrderByWithRelationInput!], skip: Int, take: Int, where: UnitWhereInput): UnitPaginated!
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+type Unit {
+  created_at: DateTime!
+  furnished: Boolean!
+  id: ID!
+  landlord: Landlord!
+  landlord_id: Int!
+  name: String!
+  photo_url: String!
+  rent_amount: Int!
+  surface: Int!
+  updated_at: DateTime!
+}
+
+input UnitCreateInput {
+  furnished: Boolean!
+  landlord: LandlordCreateNestedOneWithoutUnitInput!
+  name: String!
+  photo_url: String!
+  rent_amount: Int!
+  surface: Int!
+}
+
+input UnitOrderByWithRelationInput {
+  furnished: SortOrder
+  id: SortOrder
+  landlord: LandlordOrderByWithRelationInput
+  landlord_id: SortOrder
+  name: SortOrder
+  photo_url: SortOrder
+  rent_amount: SortOrder
+  surface: SortOrder
+}
+
+type UnitPaginated {
+  count: Int!
+  rows: [Unit!]!
+}
+
+enum UnitScalarFieldEnum {
+  created_at
+  furnished
+  id
+  landlord_id
+  name
+  photo_url
+  rent_amount
+  surface
+  updated_at
+}
+
+input UnitUpdateInput {
+  furnished: BoolFieldUpdateOperationsInput
+  landlord: LandlordUpdateOneRequiredWithoutUnitNestedInput
+  name: StringFieldUpdateOperationsInput
+  photo_url: StringFieldUpdateOperationsInput
+  rent_amount: IntFieldUpdateOperationsInput
+  surface: IntFieldUpdateOperationsInput
+}
+
+input UnitWhereInput {
+  AND: [UnitWhereInput!]
+  NOT: [UnitWhereInput!]
+  OR: [UnitWhereInput!]
+  furnished: BoolFilter
+  id: IntFilter
+  landlord: LandlordRelationFilter
+  landlord_id: IntFilter
+  name: StringFilter
+  photo_url: StringFilter
+  rent_amount: IntFilter
+  surface: IntFilter
+}
+
+input UnitWhereUniqueInput {
+  id: Int
+}

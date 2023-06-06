@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator nestgraphql {
+    provider = "node node_modules/prisma-nestjs-graphql"
+    // for yarn monorepos
+    // provider = "prisma-nestjs-graphql"
+    output   = "../src/@generated"
+}
+
+model Unit {
+    /// @HideField({match: 'Unit@(Create|Update)*Input'})
+    id Int @id @default(autoincrement())
+
+    landlord_id Int
+    landlord    Landlord @relation(fields: [landlord_id], references: [id])
+
+    name      String
+    surface   Int
+    furnished Boolean
+
+    rent_amount Int
+
+    photo_url String
+
+    /// @HideField({input: true})
+    created_at DateTime @default(now())
+    /// @HideField({input: true})
+    updated_at DateTime @updatedAt
+}
+
+model Landlord {
+    /// @HideField({match: '@(Create|Update)*Input'})
+    id Int @id @default(autoincrement())
+
+    gender String
+
+    first_name String
+    last_name  String
+
+    /// @HideField({input: true})
+    created_at DateTime @default(now())
+    /// @HideField({input: true})
+    updated_at DateTime @updatedAt
+    /// @HideField({input: true})
+    Unit       Unit[]
+}
