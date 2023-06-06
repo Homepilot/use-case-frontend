@@ -23,6 +23,18 @@ Pour le server NestJS, celui-ci devrait être prêt dès que la ligne suivant ap
 homepilot-server    | [Nest] LOG [NestApplication] Nest application successfully started +2ms
 ```
 
+Enfin tapez les 2 commandes suivantes 
+
+```
+yarn run docker:prisma dev
+```
+
+```
+cat database/*.sql | docker exec -i homepilot-database psql -U homepilot -d homepilot
+```
+
+
+
 Vous pouvez ainsi tester le backend en vous rendant sur http://localhost:3000
 Et accéder au playground graphql depuis l'url http:/localhost:3000/graphql
 Vous pouvez également ajouter cette url à la sandbox apollo : https://studio.apollographql.com/
