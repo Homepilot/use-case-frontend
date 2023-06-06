@@ -25,12 +25,8 @@ homepilot-server    | [Nest] LOG [NestApplication] Nest application successfully
 
 Vous pouvez ainsi tester le backend en vous rendant sur http://localhost:3000
 Et accéder au playground graphql depuis l'url http:/localhost:3000/graphql
-
-Pour les seeds
-`cat database/*.sql | docker exec -i homepilot-database psql -U homepilot -d homepilot`
-`yarn run docker:prisma dev`
-
-[TODO à complèter par @Benoit et @Grégoire]
+Vous pouvez également ajouter cette url à la sandbox apollo : https://studio.apollographql.com/
+Le Swagger pour l'api REST se trouve à l'url : http:/localhost:3000/graphql
 
 ## Frontend
 
