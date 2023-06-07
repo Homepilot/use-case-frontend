@@ -52,7 +52,7 @@ Pour le server NestJS, celui-ci devrait être prêt dès que la ligne suivant ap
 homepilot-server    | [Nest] LOG [NestApplication] Nest application successfully started +2ms
 ```
 
-Enfin tapez les 2 commandes suivantes pour générer mettre à jour le schéma Prisma et insérer quelques données
+Enfin tapez les 2 commandes suivantes
 
 ```
 yarn run docker:prisma dev
