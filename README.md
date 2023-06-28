@@ -34,7 +34,7 @@ Vous devrez créer un dépôt Git **privé** et inviter les personnes suivantes 
 
 - ouvrez le dossier /server
 - faites un `yarn`
-- faites un `docker-compose up --build``
+- faites un `docker-compose up --build`
 
 La base de donnée devrait être accessible dès que le log suivant apparait
 
