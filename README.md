@@ -32,7 +32,7 @@ Vous devrez créer un dépôt Git **privé** et inviter les personnes suivantes 
 
 ### Backend
 
-- ouvrez le dossier /server
+- ouvrez le dossier `/server`
 - faites un `yarn`
 - faites un `docker-compose up --build`
 
@@ -50,10 +50,10 @@ Pour le server NestJS, celui-ci devrait être prêt dès que la ligne suivant ap
 homepilot-server    | [Nest] LOG [NestApplication] Nest application successfully started +2ms
 ```
 
-Enfin tapez les 2 commandes suivantes
+Enfin tapez les 2 commandes suivantes dans le dossier `/server`
 
 ```
-yarn run docker:prisma dev
+yarn run docker:prisma migrate dev
 ```
 
 ```
