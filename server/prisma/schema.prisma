@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "linux-arm64-openssl-1.1.x"]
 }
 
 datasource db {
@@ -10,15 +11,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-generator nestgraphql {
-    provider = "node node_modules/prisma-nestjs-graphql"
-    // for yarn monorepos
-    // provider = "prisma-nestjs-graphql"
-    output   = "../src/@generated"
-}
-
 model Unit {
-    /// @HideField({match: 'Unit@(Create|Update)*Input'})
     id Int @id @default(autoincrement())
 
     landlord_id Int
@@ -32,14 +25,11 @@ model Unit {
 
     photo_url String
 
-    /// @HideField({input: true})
     created_at DateTime @default(now())
-    /// @HideField({input: true})
     updated_at DateTime @updatedAt
 }
 
 model Landlord {
-    /// @HideField({match: '@(Create|Update)*Input'})
     id Int @id @default(autoincrement())
 
     gender String
@@ -47,10 +37,7 @@ model Landlord {
     first_name String
     last_name  String
 
-    /// @HideField({input: true})
     created_at DateTime @default(now())
-    /// @HideField({input: true})
     updated_at DateTime @updatedAt
-    /// @HideField({input: true})
     Unit       Unit[]
 }
