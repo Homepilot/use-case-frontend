@@ -8,6 +8,7 @@ import "primevue/resources/primevue.min.css";
 </script>
 
 <template>
+  <h1 class="text-red-500 font-semibold text-4xl">Hello World</h1>
   <HelloWorld msg="Vite + Vue + Tailwind + PrimeVue + Pinia" />
   <HttpHelloWorld />
 </template>
