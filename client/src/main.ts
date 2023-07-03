@@ -5,7 +5,7 @@ import PrimeVue from "primevue/config";
 import { DefaultApolloClient } from "@vue/apollo-composable";
 import { ApolloClient, InMemoryCache } from "@apollo/client/core";
 
-import "./input.css";
+import "./tailwind.css";
 import "./style.css";
 
 import App from "./App.vue";
